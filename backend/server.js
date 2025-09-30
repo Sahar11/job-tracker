@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import jobRoutes from "./routes/jobRoutes.js";
+import authRoutes from "./routes/authRoutes.js"
 import cors from "cors";
 import dotenv from "dotenv";
 
@@ -16,7 +17,7 @@ mongoose.connect(process.env.MONGO_URI)
    .catch(err => console.log("MongoDB error:", err));
 
    //Routes
-// app.use("/api/auth", authRoutes);
+ app.use("/api/auth", authRoutes);
  app.use("/api/jobs", jobRoutes)
 const PORT = process.env.PORT || 5000
 

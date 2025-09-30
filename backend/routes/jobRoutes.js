@@ -1,6 +1,6 @@
 import express from "express";
 import Job from "../models/jobs.js";
-// import { authMiddleware } from "../middleware/authMiddleware.js";
+import { authMiddleware } from "../middleware/authMiddleware.js";
 // import { Parser} from "json2csv";
 import dotenv from "dotenv";
 
@@ -12,19 +12,20 @@ const router = express.Router();
 const openai = new OpenAI({apiKey: process.env.OPENAI_KEY});
 
 //create job (lodggedIn-user)
-router.post("/", async(req, res) => {
-    const job = new Job(req.body);
+router.post("/", authMiddleware, async(req, res) => {
+    const job = new Job({...req.body, userId: req.user});
     await job.save();
     res.json(job)
 })
 
 // Get all jobs
-router.get("/", async(req, res) => {
-    const jobs = await Job.find();
+router.get("/", authMiddleware,async(req, res) => {
+    const jobs = await Job.find({userId: req.user});
     res.json(jobs)
 })
+
 //Generate AT interview questions
-router.post("/questions", async(req,res) => {
+router.post("/questions", authMiddleware,async(req,res) => {
     try{
         const { description} = req.body;
         const response = await openai.createChatCompletion({
