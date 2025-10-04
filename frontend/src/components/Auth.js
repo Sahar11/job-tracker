@@ -4,20 +4,25 @@ import axios from "axios";
 function Auth({ setUser, setToken}) {
     const [isLogin, setIsLogin] = useState(true);
     const [form, setForm] = useState({ name: "", email: "", password: ""});
-    // const [token, setToken] = useState(localStorage.getItem("token") || ""); // token state
+   // const [token, setToken] = useState(localStorage.getItem("token") || ""); // token state
 
     const handleSubmit = async () => {
         const endpoint = isLogin ? "http://localhost:5000/api/auth/login" : "http://localhost:5000/api/auth/register";
         const res = await axios.post(endpoint, form);
-    
+     try {
+      const res = await axios.post(endpoint, form);
         if(isLogin) {
             localStorage.setItem("token", res.data.token);
+            console.log(res.data.token);
             setToken(res.data.token);
             setUser(res.data.user);
         } else {
             alert("Registration successful, please login");
             setIsLogin(true);
         }
+         } catch (err) {
+      alert("Error: " + (err.response?.data?.error || err.message));
+    }
 
 };
 

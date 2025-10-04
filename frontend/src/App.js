@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     if (token) {
-      axios.get("/api/jobs", { headers: { Authorization: `Bearer ${token}` } })
+      axios.get("http://localhost:5000/api/jobs", { headers: { Authorization: `Bearer ${token}` } })
         .then(res => setJobs(res.data))
         .catch(() => { /* ignore error for now */ });
     }

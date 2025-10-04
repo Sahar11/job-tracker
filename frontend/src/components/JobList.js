@@ -4,14 +4,14 @@ import axios from "axios";
 export default function JobList({ jobs, setJobs, token }) {
   const updateStatus = async (id, status) => {
     try {
-      const res = await axios.put(`/api/jobs/${id}`, { status }, { headers: { Authorization: `Bearer ${token}` }});
+      const res = await axios.put(`http://localhost:5000/api/jobs/${id}`, { status }, { headers: { Authorization: `Bearer ${token}` }});
       setJobs(prev => prev.map(j => j._id === id ? res.data : j));
     } catch { alert("Update failed"); }
   };
 
   const del = async (id) => {
     try {
-      await axios.delete(`/api/jobs/${id}`, { headers: { Authorization: `Bearer ${token}` }});
+      await axios.delete(`http://localhost:5000/api/jobs/${id}`, { headers: { Authorization: `Bearer ${token}` }});
       setJobs(prev => prev.filter(j => j._id !== id));
     } catch { alert("Delete failed"); }
   };
