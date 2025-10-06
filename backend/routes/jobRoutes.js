@@ -39,7 +39,14 @@ router.put("/:id", authMiddleware, async(req, res) => {
 });
 
 //Delete jobs
-router.delete("/:id")
+router.delete("/:id", authMiddleware,async (req, res) =>{
+  try{
+    await Job.findOneAndDelete({_id: req.params.id, userId: req.user});
+    res.json({message: "Deleted"});
+  } catch{
+    res.status(500).json({error: "Delete failed"});
+  }
+} )
 
 // Toggle this to true when you don't want to hit OpenAI
 const MOCK_MODE = true;
