@@ -28,6 +28,19 @@ router.get("/", authMiddleware,async(req, res) => {
     res.json(jobs)
 })
 
+// Update jobs
+router.put("/:id", authMiddleware, async(req, res) => {
+  try{
+    const job = await Job.findOneAndUpdate({_id: req.params.id, userId: req.user }, req.body, {new: true});
+    res.json(job);
+  } catch {
+    res.status(500).json({error: "Update failed"});
+  }
+});
+
+//Delete jobs
+router.delete("/:id")
+
 // Toggle this to true when you don't want to hit OpenAI
 const MOCK_MODE = true;
 

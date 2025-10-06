@@ -17,12 +17,12 @@ function App() {
     }
   }, [token]);
 
-  const handleSetToken = (tok, userObj) => {
-    localStorage.setItem("token", tok);
-    localStorage.setItem("user", JSON.stringify(userObj));
-    setToken(tok);
-    setUser(userObj);
-  };
+  // const handleSetToken = (tok, userObj) => {
+  //   localStorage.setItem("token", tok);
+  //   localStorage.setItem("user", JSON.stringify(userObj));
+  //   setToken(tok);
+  //   setUser(userObj);
+  // };
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -43,7 +43,7 @@ function App() {
       <h1 className="text-3xl mb-4">AI Job Tracker</h1>
 
       {!token ? (
-        <Auth onLogin={handleSetToken} />
+        <Auth setUser={setUser} setToken={setToken} />
       ) : (
         <>
           <div className="flex justify-between items-center mb-4">
