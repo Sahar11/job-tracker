@@ -113,4 +113,14 @@ router.post("/questions", async (req, res) => {
 //         res.status(500).json({error: "Failed to generate questions"})
 //     }
 // });
+
+//Export PDF
+
+router.get("/export/pdf", authMiddleware, async(req, res) => {
+  try{
+     
+  } catch {
+
+  }
+})
 export default router;
