@@ -118,9 +118,26 @@ router.post("/questions", async (req, res) => {
 
 router.get("/export/pdf", authMiddleware, async(req, res) => {
   try{
+     const jobs = await Job.find({userId:req.user});
+     const doc = new PDFDocument({margin: 50});
+     res.setHeader("Content-Type", "application/pdf");
+     res.setHeader("Content-Disposition", "attachment; filename=jobs.pdf");
+
+     doc.pipe(res);
+     doc.fontSize(20).text("Job Application Report", { align: "center"});
+     doc.moveDown();
+
+     jobs.forEach(job => {
+      doc.fontSize(14).text(`${job.title} @ ${job.company}`);
+      doc.fontSize(12).text(`Status: ${job.status}  |  Applied: ${new Date(job.dateApplied).toDateString()}`);
+      doc.text(job.description, { width: 450 });
+      doc.moveDown();
+     });
+
+     doc.end();
      
   } catch {
-
+    res.status(500).json({error: "PDF export failed"});
   }
-})
+});
 export default router;
