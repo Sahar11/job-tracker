@@ -113,6 +113,20 @@ router.post("/questions", async (req, res) => {
 //         res.status(500).json({error: "Failed to generate questions"})
 //     }
 // });
+// Export CSV
+
+router.get("/export/csv", authMiddleware, async(req, res) => {
+  try{
+    const jobs = await Job.find({ userId: req.user});
+    const fields = ["title", "company", "description"];
+    const csv = new Parse({ fields }).parse(jobs);
+    res.setHeader("Content-Type", "text/csv");
+    res.setHeader("Content-Disposition", "attachment; filename=jobs.csv");
+    res.status(200).end(csv);
+  } catch { 
+    res.status(500).json({ error: " csv export failed"})
+  }
+})
 
 //Export PDF
 
