@@ -126,7 +126,7 @@ router.get("/export/csv", authMiddleware, async(req, res) => {
   } catch { 
     res.status(500).json({ error: " csv export failed"})
   }
-})
+});
 
 //Export PDF
 
