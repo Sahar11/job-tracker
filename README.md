@@ -127,15 +127,15 @@ Click “Export CSV” or “Export PDF” for reports.
 
 📡 API Endpoints Overview
 Method	Endpoint	Description	Auth
-POST	/api/auth/register	Register new user	❌
-POST	/api/auth/login	Login user	❌
-GET	/api/jobs	Get all user jobs	✅
-POST	/api/jobs	Create new job	✅
-PUT	/api/jobs/:id	Update job	✅
-DELETE	/api/jobs/:id	Delete job	✅
-POST	/api/jobs/questions	Generate interview questions	✅
-GET	/api/jobs/export/csv	Export jobs as CSV	✅
-GET	/api/jobs/export/pdf	Export jobs as PDF	✅
+POST	/api/auth/register	Register new user
+POST	/api/auth/login	Login user	
+GET	/api/jobs	Get all user jobs	
+POST	/api/jobs	Create new job	
+PUT	/api/jobs/:id	Update job	
+DELETE	/api/jobs/:id	Delete job	
+POST	/api/jobs/questions	Generate interview questions	
+GET	/api/jobs/export/csv	Export jobs as CSV	
+GET	/api/jobs/export/pdf	Export jobs as PDF	
 
 ✅ = Requires Authorization: Bearer <token>
 
@@ -162,16 +162,6 @@ curl -X POST http://localhost:5000/api/jobs/questions \
 -H "Authorization: Bearer <your_token>" \
 -H "Content-Type: application/json" \
 -d '{"description":"Looking for a backend developer skilled in Node.js and MongoDB"}'
-
-📄 Exporting Data
-
-CSV:
-[GET] /api/jobs/export/csv?token=<your_token>
-→ Downloads jobs.csv
-
-PDF:
-[GET] /api/jobs/export/pdf?token=<your_token>
-→ Downloads jobs.pdf
 
 🧰 Deployment
 
@@ -230,23 +220,8 @@ AI requests happen server-side — API key never exposed.
 
 CORS is restricted in production.
 
-💡 Inspiration
-
-This project showcases:
-
-MERN stack mastery (React, Node.js, MongoDB)
-
-Secure auth flow
-
-REST API best practices
-
-AI integration (OpenAI)
-
-Practical export features (CSV/PDF)
-
 🏆 Author
 
 Sahar
 
-💻 Built using React, Node.js, and OpenAI
 
