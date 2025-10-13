@@ -1,8 +1,8 @@
 # 🧠 AI Job Tracker
 
-## AI Job Tracker is a full-stack MERN application that helps users track their job applications, generate AI-based interview questions, and export reports in CSV or PDF format — all with secure JWT authentication.
+### AI Job Tracker is a full-stack MERN application that helps users track their job applications, generate AI-based interview questions, and export reports in CSV or PDF format — all with secure JWT authentication.
 
-## Built with:
+### Built with:
 
 ⚛️ React (frontend)
 
