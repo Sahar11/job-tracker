@@ -3,17 +3,23 @@ import axios from "axios";
 import Auth from "./components/Auth";
 import JobForm from "./components/JobForm";
 import JobList from "./components/JobList";
+import useAutoLogout from "./hooks/useAutoLogout";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")) || null);
   const [jobs, setJobs] = useState([]);
 
+    // ✅ If user is logged in, enable auto logout after inactivity
+  useAutoLogout(token ? 5 * 60 * 1000 : null, logout); 
+
   useEffect(() => {
     if (token) {
+     
       axios.get("http://localhost:5000/api/jobs", { headers: { Authorization: `Bearer ${token}` } })
         .then(res => setJobs(res.data))
         .catch(() => { /* ignore error for now */ });
+      
     }
   }, [token]);
 
