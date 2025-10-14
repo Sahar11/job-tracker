@@ -1,22 +1,27 @@
 import { useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 
-export default function useAutoLogout( timeout = 5 * 60 * 1000) {
-    const navigate = useNavigate();
+
+export default function useAutoLogout( timeout = null, logout) {
+ 
     const timeRef = useRef();
 
-    const logout = () => {
-        localStorage.removeItem("token");
-        alert("Session expired due to inactivity. Please log in again");
-        navigate("/login")
-    }
+    // const logout = () => {
+    //     localStorage.removeItem("token");
+    //     alert("Session expired due to inactivity. Please log in again");
+    //     navigate("http://localhost:5000/api/auth/login")
+    // }
 
-    const resetTimer = () => {
-        clearTimeout(timeRef.current);
-        timeRef.current = setTimeout(logout, timeout);
-    };
+     const resetTimer = () => {
+    clearTimeout(timeRef.current);
+    if (timeout && logout) {
+      timeRef.current = setTimeout(() => {
+        logout();
+      }, timeout);
+    }
+  };
     
     useEffect (() => {
+        if (!timeout || !logout) return;
          const events = ["mousemove", "keydown", "click", "scroll", "touchstart"];
          events.forEach((event)=> window.addEventListener(event, resetTimer));
 
@@ -26,7 +31,7 @@ export default function useAutoLogout( timeout = 5 * 60 * 1000) {
          clearTimeout(timeRef.current);
          events.forEach((event)=> window.removeEventListener(event, resetTimer));
          };
-    }, []);
+    }, [timeout, logout]);
 
-    return null;
+    
 }

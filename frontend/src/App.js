@@ -10,18 +10,27 @@ function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")) || null);
   const [jobs, setJobs] = useState([]);
 
-    // ✅ If user is logged in, enable auto logout after inactivity
-  useAutoLogout(token ? 5 * 60 * 1000 : null, logout); 
+   const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setToken(null);
+    setUser(null);
+    setJobs([]);
+  };
+
+     // ✅ If user is logged in, enable auto logout after inactivity
+  useAutoLogout(token ? 5 * 60 * 1000 : null, logout);
+  
 
   useEffect(() => {
     if (token) {
-     
       axios.get("http://localhost:5000/api/jobs", { headers: { Authorization: `Bearer ${token}` } })
         .then(res => setJobs(res.data))
         .catch(() => { /* ignore error for now */ });
       
     }
   }, [token]);
+  
 
   // const handleSetToken = (tok, userObj) => {
   //   localStorage.setItem("token", tok);
@@ -30,13 +39,7 @@ function App() {
   //   setUser(userObj);
   // };
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    setToken(null);
-    setUser(null);
-    setJobs([]);
-  };
+ 
 
   const downloadFile = (type) => {
     const t = localStorage.getItem("token");
