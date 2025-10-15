@@ -139,30 +139,6 @@ GET	/api/jobs/export/pdf	Export jobs as PDF
 
 ✅ = Requires Authorization: Bearer <token>
 
-🧾 Example API Calls (for Postman or Curl)
-
-Login
-
-curl -X POST http://localhost:5000/api/auth/login \
--H "Content-Type: application/json" \
--d '{"email":"test@example.com","password":"123456"}'
-
-
-Add Job
-
-curl -X POST http://localhost:5000/api/jobs \
--H "Authorization: Bearer <your_token>" \
--H "Content-Type: application/json" \
--d '{"title":"Frontend Dev","company":"ACME","description":"React & Node.js"}'
-
-
-Generate AI Questions
-
-curl -X POST http://localhost:5000/api/jobs/questions \
--H "Authorization: Bearer <your_token>" \
--H "Content-Type: application/json" \
--d '{"description":"Looking for a backend developer skilled in Node.js and MongoDB"}'
-
 
 🧑‍💻 Example Demo Flow
 
