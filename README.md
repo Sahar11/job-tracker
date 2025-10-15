@@ -197,18 +197,6 @@ Export your jobs as PDF/CSV
 Logout safely
 
 
-🧩 Future Improvements
-
- Add analytics charts (e.g., status breakdown)
-
- Add email notifications
-
- Add job search integration (Indeed / LinkedIn API)
-
- Dark mode toggle
-
- Mobile-friendly UI with Tailwind
-
 
 🛡️ Security Notes
 
@@ -217,8 +205,6 @@ Passwords are hashed using bcrypt.
 Tokens are signed with JWT secret.
 
 AI requests happen server-side — API key never exposed.
-
-CORS is restricted in production.
 
 🏆 Author
 
