@@ -163,24 +163,6 @@ curl -X POST http://localhost:5000/api/jobs/questions \
 -H "Content-Type: application/json" \
 -d '{"description":"Looking for a backend developer skilled in Node.js and MongoDB"}'
 
-🧰 Deployment
-
-Frontend (Vercel):
-
-Connect your repo.
-
-Set build command to npm run build inside client/.
-
-Set environment variable REACT_APP_API_URL if needed.
-
-Backend (Render / Railway / Heroku):
-
-Set environment variables from .env.
-
-Set Start Command: npm start
-
-Update CORS origins to your deployed frontend domain.
-
 
 🧑‍💻 Example Demo Flow
 
