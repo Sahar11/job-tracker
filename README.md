@@ -40,34 +40,6 @@ Authentication	JWT, bcrypt
 AI Features	OpenAI API
 Export	json2csv, pdfkit
 
-🗂️ Project Structure
-job-tracker/
-│
-├── server/               # Backend
-│   ├── models/
-│   │   ├── User.js
-│   │   └── Job.js
-│   ├── routes/
-│   │   ├── authRoutes.js
-│   │   └── jobRoutes.js
-│   ├── middleware/
-│   │   └── authMiddleware.js
-│   ├── server.js
-│   └── .env
-│
-├── client/               # Frontend
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── Auth.js
-│   │   │   ├── JobForm.js
-│   │   │   └── JobList.js
-│   │   ├── App.js
-│   │   ├── index.js
-│   │   └── index.css
-│   └── package.json
-│
-├── README.md
-└── package.json
 
 ⚙️ Setup Instructions
 1️⃣ Clone the repo
@@ -105,27 +77,6 @@ Add this to /client/package.json for local proxy:
 
 "proxy": "http://localhost:5000"
 
-🧠 Using the App
-
-Register or Login
-
-Enter name, email, and password.
-
-Add a Job
-
-Fill out title, company, and description.
-
-Generate AI Questions
-
-Click “Generate AI Questions” → OpenAI suggests interview questions.
-
-Update Status
-
-Mark job as Interview, Offer, or Rejected.
-
-Export
-
-Click “Export CSV” or “Export PDF” for reports.
 
 📡 API Endpoints Overview
 Method	Endpoint	Description	Auth
@@ -136,8 +87,6 @@ POST	/api/jobs	Create new job
 PUT	/api/jobs/:id	Update job	
 DELETE	/api/jobs/:id	Delete job	
 POST	/api/jobs/questions	Generate interview questions	
-GET	/api/jobs/export/csv	Export jobs as CSV	
-GET	/api/jobs/export/pdf	Export jobs as PDF	
 
 ✅ = Requires Authorization: Bearer <token>
 
@@ -151,8 +100,6 @@ Login → get JWT saved in localStorage
 Add a job application
 
 Ask AI for interview questions
-
-Export your jobs as PDF/CSV
 
 Logout safely
 
