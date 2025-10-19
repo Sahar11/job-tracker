@@ -31,20 +31,6 @@ Download your job list as a CSV or PDF report.
 ✅ Real-Time Insights (Optional)
 Easily extend the app to visualize application trends using Recharts.
 
-🧩 Tech Stack
-Layer Technology
-Frontend-React, Axios, TailwindCSS
-Backend-Node.js, Express
-Database-MongoDB (via Mongoose)
-Authentication	JWT, bcrypt
-AI Features	OpenAI API
-Export	json2csv, pdfkit
-
-
-⚙️ Setup Instructions
-1️⃣ Clone the repo
-git clone https://github.com/yourusername/ai-job-tracker.git
-cd ai-job-tracker
 
 2️⃣ Install backend dependencies
 cd server
@@ -58,7 +44,6 @@ PORT=5000
 
 4️⃣ Run the backend
 npm run dev
-
 
 Make sure your MongoDB instance is running (local or Atlas).
 
@@ -102,7 +87,6 @@ Add a job application
 Ask AI for interview questions
 
 Logout safely
-
 
 
 🛡️ Security Notes
