@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Auth from "./components/Auth";
-import JobForm from "./components/JobForm";
-import JobList from "./components/JobList";
-import useAutoLogout from "./hooks/useAutoLogout";
+import Auth from "./Auth";
+import JobForm from "./JobForm";
+import JobList from "./JobList";
+import useAutoLogout from "../hooks/useAutoLogout";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || null);

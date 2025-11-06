@@ -26,7 +26,7 @@ export default function useAutoLogout( timeout = null, logout) {
          events.forEach((event)=> window.addEventListener(event, resetTimer));
 
          resetTimer(); // start timer immediately
-
+ 
          return() => {
          clearTimeout(timeRef.current);
          events.forEach((event)=> window.removeEventListener(event, resetTimer));
