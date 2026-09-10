@@ -26,7 +26,7 @@ function App() {
     const res = await axios.post("http://localhost:5000/api/jobs", form, {headers: {Authorization: `Bearer ${token}`}});
     setJobs([...jobs, res.data]);
   }
-
+ 
   const generateQuestions = async(desc) => {
     const res = await axios.post("http://localhost:5000/api/jobs/questions", 
       {description: desc},
